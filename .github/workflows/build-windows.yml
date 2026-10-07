@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - 'status.json'
       - 'status.schema.json'
+      - 'agent-jobs.json'
       - 'inbox/**'
       - 'outbox/**'
       - '**.md'
