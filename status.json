@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-07T20:02:11+03:30",
+  "updated_at": "2026-10-07T20:09:48+03:30",
   "agents": [
     {
       "id": "babyt",
@@ -7,8 +7,8 @@
       "emoji": "🧠",
       "group": "main",
       "role_fa": "هماهنگ‌کننده‌ی شبکه",
-      "status": "working",
-      "current_task": "هماهنگی شبکه‌ی ایجنت‌ها",
+      "status": "idle",
+      "current_task": "—",
       "last_activity": null,
       "today_done": 0
     },
@@ -62,72 +62,6 @@
       "emoji": "4️⃣",
       "group": "main",
       "role_fa": "آماده‌ی مأموریت",
-      "status": "idle",
-      "current_task": "—",
-      "last_activity": null,
-      "today_done": 0
-    },
-    {
-      "id": "iasinsta",
-      "name": "IASinsta",
-      "emoji": "📹",
-      "group": "work",
-      "role_fa": "نگهبان پیج اینستاگرام IAS",
-      "status": "idle",
-      "current_task": "—",
-      "last_activity": null,
-      "today_done": 0
-    },
-    {
-      "id": "bepagent",
-      "name": "BEPagent",
-      "emoji": "☀️",
-      "group": "work",
-      "role_fa": "نگهبان پیج @bepco.official",
-      "status": "idle",
-      "current_task": "—",
-      "last_activity": null,
-      "today_done": 0
-    },
-    {
-      "id": "iasagent",
-      "name": "IASagent",
-      "emoji": "🖥️",
-      "group": "work",
-      "role_fa": "متخصص IAS Viewer دسکتاپ",
-      "status": "idle",
-      "current_task": "—",
-      "last_activity": null,
-      "today_done": 0
-    },
-    {
-      "id": "ivaagent",
-      "name": "IVAagent",
-      "emoji": "🤖",
-      "group": "work",
-      "role_fa": "مسئول IAS-Viewer اندروید",
-      "status": "working",
-      "current_task": "Android build watch (10m)",
-      "last_activity": "2026-10-07T19:55:48+03:30",
-      "today_done": 49
-    },
-    {
-      "id": "licagent",
-      "name": "LICagent",
-      "emoji": "🔑",
-      "group": "work",
-      "role_fa": "متخصص لایسنس",
-      "status": "idle",
-      "current_task": "—",
-      "last_activity": null,
-      "today_done": 0
-    },
-    {
-      "id": "lawagent",
-      "name": "LAWagent",
-      "emoji": "⚖️",
-      "group": "work",
-      "role_fa": "متخصص حقوقی و قراردادها",
       "status": "idle",
       "current_task": "—",
       "last_activity": null,
