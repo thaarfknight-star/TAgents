@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-07T22:10:23+03:30",
+  "updated_at": "2026-10-07T22:12:16+03:30",
   "agents": [
     {
       "id": "babyt",
@@ -8,9 +8,9 @@
       "group": "main",
       "role_fa": "هماهنگ‌کننده‌ی شبکه",
       "status": "idle",
-      "current_task": "نگهبان فرمان‌های TAgents (inbox)",
-      "last_activity": "2026-10-07T22:08:40+03:30",
-      "today_done": 8
+      "current_task": "انتشار فید وضعیت ایجنت‌ها (TAgents)",
+      "last_activity": "2026-10-07T22:10:59+03:30",
+      "today_done": 104
     },
     {
       "id": "tagent",
