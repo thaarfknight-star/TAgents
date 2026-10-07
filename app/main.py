@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 """مانیتور شبکه‌ی ایجنت‌های TAgents — برنامه‌ی اصلی (PyQt6).
 
+این برنامه فقط شبکه‌ی main را پوشش می‌دهد: BabyT (هماهنگ‌کننده) + پنج ایجنت
+(TAgent و TAgent1 تا TAgent4). شبکه‌ی work جداست و دست‌نخورده می‌ماند.
+
 چیدمان (راست‌چین):
-    سمت راست: بوم گراف شبکه (نودها دایره با ایموجی+نام، BabyT در مرکز)
+    سمت راست: بوم گراف تک‌شبکه‌ای (نودها دایره با ایموجی+نام، BabyT در مرکز،
+              پنج ایجنت main دورش)
     سمت چپ:   پنل جزئیات ایجنت انتخاب‌شده
     پایین:    لاگ فعالیت
 
@@ -99,20 +103,13 @@ class NetworkCanvas(QtWidgets.QWidget):
         w, h = max(1, self.width()), max(1, self.height())
         cx, cy = w / 2, h / 2 - 8
         scale = min(1.0, min(w, h) / 560.0)
-        r1 = min(w, h) * 0.205
-        r2 = min(w, h) * 0.365
-        nodes = [("babyt", cx, cy, 44 * scale)]
-        main_agents = [a for a in AGENTS if a["group"] == "main" and a["id"] != "babyt"]
-        work_agents = [a for a in AGENTS if a["group"] == "work"]
+        r1 = min(w, h) * 0.30
+        nodes = [("babyt", cx, cy, 46 * scale)]
+        main_agents = [a for a in AGENTS if a["id"] != "babyt"]
         for i, a in enumerate(main_agents):
             ang = math.radians(-90 + i * (360.0 / len(main_agents)))
             nodes.append(
-                (a["id"], cx + r1 * math.cos(ang), cy + r1 * math.sin(ang), 34 * scale)
-            )
-        for i, a in enumerate(work_agents):
-            ang = math.radians(-60 + i * (360.0 / len(work_agents)))
-            nodes.append(
-                (a["id"], cx + r2 * math.cos(ang), cy + r2 * math.sin(ang), 30 * scale)
+                (a["id"], cx + r1 * math.cos(ang), cy + r1 * math.sin(ang), 36 * scale)
             )
         self._nodes = nodes
         return nodes
