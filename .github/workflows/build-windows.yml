@@ -3,6 +3,12 @@ name: Build Windows EXE
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - 'status.json'
+      - 'status.schema.json'
+      - 'inbox/**'
+      - 'outbox/**'
+      - '**.md'
   workflow_dispatch:
 
 concurrency:
