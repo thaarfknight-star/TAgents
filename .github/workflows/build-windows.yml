@@ -38,7 +38,7 @@ jobs:
 
     - name: Build onefile EXE
       run: |
-        pyinstaller --noconfirm --onefile --windowed --name TAgents-Monitor --collect-all PyQt6 app/main.py
+        pyinstaller --noconfirm --onefile --windowed --name TAgents-Monitor --icon tagents.ico --collect-all PyQt6 app/main.py
 
     - name: Upload EXE artifact
       uses: actions/upload-artifact@v4
