@@ -1,71 +1,71 @@
 {
+  "updated_at": "2026-10-08T11:53:48+03:30",
   "agents": [
     {
-      "current_task": "انتشار فید وضعیت ایجنت‌ها (TAgents)",
+      "id": "babyt",
+      "name": "BabyT",
       "emoji": "🧠",
       "group": "main",
-      "id": "babyt",
-      "last_activity": "2026-10-08T11:49:45+03:30",
-      "name": "BabyT",
       "role_fa": "هماهنگ‌کننده‌ی شبکه",
       "status": "working",
-      "today_done": 548
+      "current_task": "انتشار فید وضعیت ایجنت‌ها (TAgents)",
+      "last_activity": "2026-10-08T11:52:45+03:30",
+      "today_done": 550
     },
     {
-      "current_task": "—",
+      "id": "tagent",
+      "name": "TAgent",
       "emoji": "🎮",
       "group": "main",
-      "id": "tagent",
-      "last_activity": null,
-      "name": "TAgent",
       "role_fa": "مجری تسک‌های عمومی",
       "status": "idle",
+      "current_task": "—",
+      "last_activity": null,
       "today_done": 0
     },
     {
-      "current_task": "—",
+      "id": "tagent1",
+      "name": "TAgent1",
       "emoji": "1️⃣",
       "group": "main",
-      "id": "tagent1",
-      "last_activity": null,
-      "name": "TAgent1",
       "role_fa": "مالک نسخه‌ی ویندوز TAgents",
       "status": "idle",
+      "current_task": "—",
+      "last_activity": null,
       "today_done": 0
     },
     {
-      "current_task": "—",
+      "id": "tagent2",
+      "name": "TAgent2",
       "emoji": "2️⃣",
       "group": "main",
-      "id": "tagent2",
-      "last_activity": null,
-      "name": "TAgent2",
       "role_fa": "مالک نسخه‌ی اندروید TAgents",
       "status": "idle",
+      "current_task": "—",
+      "last_activity": null,
       "today_done": 0
     },
     {
-      "current_task": "—",
+      "id": "tagent3",
+      "name": "TAgent3",
       "emoji": "3️⃣",
       "group": "main",
-      "id": "tagent3",
-      "last_activity": null,
-      "name": "TAgent3",
       "role_fa": "طراح آیکون TAgents",
       "status": "idle",
+      "current_task": "—",
+      "last_activity": null,
       "today_done": 0
     },
     {
-      "current_task": "—",
+      "id": "tagent4",
+      "name": "TAgent4",
       "emoji": "4️⃣",
       "group": "main",
-      "id": "tagent4",
-      "last_activity": null,
-      "name": "TAgent4",
       "role_fa": "آماده‌ی مأموریت",
       "status": "idle",
+      "current_task": "—",
+      "last_activity": null,
       "today_done": 0
     }
-  ],
-  "updated_at": "2026-10-08T11:50:16+03:30"
+  ]
 }
