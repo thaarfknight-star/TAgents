@@ -232,15 +232,18 @@ class TokenInspector(QtCore.QObject):
 
 
 def revoke_token_secret(secret):
-    """revoke کردن توکن از طریق Credential Revocation API (بدون احراز هویت)."""
+    """revoke کردن توکن از طریق Credential Revocation API.
+
+    حتماً بدون هدر Authorization (درخواست احرازهویتی 403 می‌گیرد).
+    پاسخ موفق طبق داک رسمی 202 است.
+    """
     resp = requests.post(
         REVOKE_URL,
         json={"credentials": [secret]},
         headers={"Accept": "application/vnd.github+json"},
         timeout=15,
     )
-    # 204 یعنی موفق؛ برخی پاسخ‌ها 200 با بدنه‌ی خالی برمی‌گردانند
-    if resp.status_code in (200, 204):
+    if resp.status_code in (200, 202, 204):
         return True
     resp.raise_for_status()
     return True
@@ -289,12 +292,16 @@ class TokenSentinelDialog(QtWidgets.QDialog):
         btnRow = QtWidgets.QHBoxLayout()
         self.addBtn = QtWidgets.QPushButton("➕ افزودن توکن")
         self.delBtn = QtWidgets.QPushButton("🗑 حذف")
+        self.importBtn = QtWidgets.QPushButton("📥 توکن برنامه → صندوق")
+        self.importBtn.setToolTip("کپی توکن فعلی برنامه (فید/فرمان) به صندوق نگهبان برای بازرسی — توکن برنامه سر جایش می‌ماند.")
         btnRow.addWidget(self.addBtn)
         btnRow.addWidget(self.delBtn)
+        btnRow.addWidget(self.importBtn)
         btnRow.addStretch(1)
         root.addLayout(btnRow)
         self.addBtn.clicked.connect(self._on_add)
         self.delBtn.clicked.connect(self._on_delete)
+        self.importBtn.clicked.connect(self._on_import_app_token)
 
         # جزئیات
         self.detailBox = QtWidgets.QGroupBox("بازرسی توکن")
@@ -414,6 +421,44 @@ class TokenSentinelDialog(QtWidgets.QDialog):
         token = None
         self._reload_list()
 
+    def _on_import_app_token(self):
+        """کپی توکن فعلی برنامه به صندوق (بدون تغییر ذخیره‌سازی برنامه)."""
+        if not keyring_available():
+            QtWidgets.QMessageBox.warning(
+                self, "خطا", "keyring در دسترس نیست؛ ذخیره‌ی امن ممکن نیست."
+            )
+            return
+        app_token = ""
+        try:
+            app_token = (get_app_token() or "").strip()
+        except Exception:
+            app_token = ""
+        if not app_token:
+            QtWidgets.QMessageBox.information(
+                self, "توکن برنامه", "توکنی در تنظیمات برنامه ذخیره نشده است."
+            )
+            return
+        # اگر قبلاً با همین hint وارد شده، تکراری اضافه نکن
+        hint = _mask_token(app_token)
+        for it in list_tokens():
+            if it.get("hint") == hint and "برنامه" in it.get("label", ""):
+                QtWidgets.QMessageBox.information(
+                    self, "توکن برنامه", "این توکن قبلاً در صندوق هست."
+                )
+                return
+        try:
+            add_token("توکن برنامه (فید/فرمان)", app_token)
+        except Exception as exc:
+            QtWidgets.QMessageBox.warning(self, "خطا", f"وارد کردن ناموفق بود:\n{exc}")
+            return
+        finally:
+            app_token = None
+        self._reload_list()
+        QtWidgets.QMessageBox.information(
+            self, "انجام شد",
+            "توکن برنامه در صندوق نگهبان کپی شد (توکن برنامه سر جایش ماند)."
+        )
+
     def _on_delete(self):
         tid = self._selected_id()
         if not tid:
@@ -441,8 +486,14 @@ class TokenSentinelDialog(QtWidgets.QDialog):
         kind = data.get("token_kind", "unknown")
         kind_fa = {"classic": "کلاسیک (ghp_)", "fine-grained": "دقیق (github_pat_)"}.get(kind, "نامشخص")
         scopes = data.get("scopes") or ""
-        perms = data.get("accepted_permissions") or ""
-        extra = f" — دسترسی‌ها: {scopes}" if scopes else (f" — دسترسی‌های پذیرفته‌شده: {perms}" if perms else "")
+        if scopes:
+            extra = f" — اسکوپ‌ها: {scopes}"
+        elif kind == "fine-grained":
+            # صادقانه: هدر X-Accepted-GitHub-Permissions فقط نیازمندی آن
+            # اندپوینت را نشان می‌دهد، نه دسترسی‌های واقعی توکن؛ پس نمایش نمی‌دهیم.
+            extra = " — فهرست دقیق دسترسی‌ها از هدرها قابل استخراج نیست"
+        else:
+            extra = ""
         self.kindLabel.setText(f"نوع توکن: {kind_fa}{extra}")
 
         limit = data.get("rate_limit")
