@@ -402,6 +402,9 @@ class MainWindow(QtWidgets.QMainWindow):
         settings_btn = QtWidgets.QPushButton("⚙ تنظیمات توکن")
         settings_btn.clicked.connect(self._open_settings)
         header.addWidget(settings_btn)
+        sentinel_btn = QtWidgets.QPushButton("🛡 نگهبان توکن")
+        sentinel_btn.clicked.connect(self._open_sentinel)
+        header.addWidget(sentinel_btn)
         root.addLayout(header)
 
         # محتوا: اول بوم (در RTL می‌رود سمت راست)، بعد پنل جزئیات
@@ -549,6 +552,10 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def _open_settings(self):
         SettingsDialog(self).exec()
+
+    def _open_sentinel(self):
+        from app.token_sentinel import TokenSentinelDialog
+        TokenSentinelDialog(self).exec()
 
 
 def main():
