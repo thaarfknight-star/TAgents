@@ -1,0 +1,17 @@
+«TAgents» — مانیتور شبکه‌ی ایجنت‌ها
+Copyright (C) 2026 Taha Arefi (طه عارفی)
+
+این برنامه نرم‌افزار آزاد است: شما می‌توانید آن را تحت شرایط
+«GNU Affero General Public License» نسخه‌ی ۳ (یا هر نسخه‌ی جدیدتر،
+به انتخاب شما) بازتوزیع و/یا اصلاح کنید.
+متن کامل لایسنس: فایل LICENSE در ریپوی گیت‌هاب + https://www.gnu.org/licenses/agpl-3.0.html
+سورس‌کد: https://github.com/thaarfknight-star/TAgents
+
+---
+
+TAgents — Agent Network Monitor — Copyright (C) 2026 Taha Arefi
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Full text: LICENSE file in the GitHub repo — https://www.gnu.org/licenses/agpl-3.0.html

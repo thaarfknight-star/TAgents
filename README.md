@@ -85,3 +85,15 @@ legacy/v01/           میراث نسخه‌ی ۰.۱ (inbox/outbox/presence قد
 - فید `status.json` و واچر `inbox`/`outbox` سمت BabyT با کرون ساخته می‌شود؛
   این ریپو فقط اسکیما + کلاینت را دارد.
 - نگاشت `agent-jobs.json` برای بیشتر ایجنت‌ها خالی است و BabyT تکمیلش می‌کند.
+
+## لایسنس
+
+این برنامه نرم‌افزار آزاد است و تحت **GNU Affero General Public License v3.0** منتشر می‌شود — متن کامل در فایل `LICENSE`.
+
+Copyright (C) 2026 Taha Arefi (طه عارفی)
+
+## License
+
+This program is free software released under the **GNU Affero General Public License v3.0** — see the `LICENSE` file for the full text.
+
+Copyright (C) 2026 Taha Arefi
